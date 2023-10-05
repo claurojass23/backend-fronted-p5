@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 const connect = async (uri) => {
     try {
@@ -18,7 +19,7 @@ module.exports = connect;
 /* const mongoose = require('mongoose')
 
 const connect = async ()=>{
-    const connection = await mongoose.connect(`mongodb+srv://<cristinatest>:<mongodb123>@claudiadb.klflcsq.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp`)
+    const connection = await mongoose.connect(`process.env.MONGO_URL+/proyecto5`)
     console.log('se ha conectado correctamente:', connection.connection.host)
 }
 
