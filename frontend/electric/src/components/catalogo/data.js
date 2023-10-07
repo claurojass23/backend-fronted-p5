@@ -1,4 +1,4 @@
-import producto1 from '../../img/producto1'
+/* import producto1 from '../../img/producto1'
 import producto2 from '../../img/producto2'
 import producto3 from '../../img/producto3'
 import producto4 from '../../img/producto4'
@@ -58,7 +58,7 @@ export const productos =[
     
     
 
-]
+] */
 
 /* export const jugos =[
     {
