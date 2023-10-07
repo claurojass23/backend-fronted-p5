@@ -3,6 +3,7 @@ const cors = require('cors')
 const auth = require('./src/routes/auth')
 
 
+
 require('dotenv').config()
 
 
@@ -14,11 +15,11 @@ server.use(cors())
 
 server.use(express.json())
 
-connect('mongodb://127.0.0.1:27017/electronic')
+connect(process.env.MONGO_URL)
 auth(server)
 
 server.get('/',(req,res)=>{
-    response.send("API V1.0")
+    res.send("API V1.0")
 })
 
 server.listen(process.env.PORT,()=>{

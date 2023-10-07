@@ -1,24 +1,49 @@
 import React from 'react'
 import './regístrate.css'
-import { FormLabel, Form} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
+import swal from 'sweetalert'
+import { useState } from 'react'
 
 function Regístrate() {
-  return (
+ 
+ const[form, setForm] = useState({
+  name: "",
+  lastname:"",
+  email: "",
+  password: "",
+  rol:""
+  
+ })
+
+ const onSave =(event) =>{
+  event.PreventDefault()  
+   
+ } 
+
+ const onChange = (e) =>{
+    setForm({
+      ...form,[e.target.name] : e.target.value
+    })
+
+ }
+
+   return (
     <>
     <div>
       <h1>Registro de Usuario</h1>
-      <Form onSubmit={''} className='form-reserva'>
+      <Form onSubmit={onSave} className='form-reserva'>
       <Form.Group className='mb-3' controlId='formBasicEmail'>
-      <Form.Label>Nombre de Usuario</Form.Label>
-      {/* formdata.nombre y el onChange poner */}
-      <Form.Control type='string' value={''}  onChange={''} placeholder='Escribe tu nombre de usuario' name='nombre'/>
+      <Form.Label>Nombre</Form.Label>
+     <Form.Control type='text' name='name' value={form.name}  onChange={onChange} placeholder='Escribe tu nombre'/>
+      <Form.Label>Apellido</Form.Label>
+      <Form.Control type='text'  value={form.lastname} onChange={onChange} placeholder='Escribe tu Email' name='lastname'/>
       <Form.Label>Correo Electrónico</Form.Label>
-      {/* formData.email onChange */}
-      <Form.Control type='email'  value={''} onChange={''} placeholder='Escribe tu Email' name='email'/>
+      <Form.Control type='email'  value={form.email} onChange={onChange} placeholder='Escribe tu Email' name='email'/>
       <Form.Label>Contraseña</Form.Label>
-      <Form.Control type='password'  value={''} onChange={''} placeholder='Escribe una contraseña' name='password'/>
-      <Form.Label>Confirma la contraseña</Form.Label>
-      <Form.Control type='password'  value={''} onChange={''} placeholder='Escribe de nuevo la contraseña' name='password'/>
+      <Form.Control type='password'  value={form.password} onChange={onChange} placeholder='Escribe una contraseña' name='password'/>
+      <Form.Label>Rol</Form.Label>
+      <Form.Control type='text'  value={form.rol} onChange={onChange}  name='rol'/>
+      
 
       <Form.Text className='text-muted'>
          Tu informacion es privada y no sera compartida o reutilizada

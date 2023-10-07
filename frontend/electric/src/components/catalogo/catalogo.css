@@ -1,0 +1,42 @@
+.menu-contenedor {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 3rem;
+    text-transform: uppercase;
+   }
+     
+   .productos-contenedor {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 15px; 
+    margin-top: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+   }
+   
+   
+   .Card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 2rem;
+   }
+   
+   .Card:hover{
+    box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.562) ;
+   }
+   
+   .imgCard {
+    width: 200px;
+    height: 200px;
+   }
+   
+   .button{
+    margin-top: 2rem;
+   }
+     
