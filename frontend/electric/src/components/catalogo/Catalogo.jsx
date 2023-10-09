@@ -25,7 +25,7 @@ function Productos() {
              <Card className='card-menu' key={index} style={{ width: '18rem', background: 'transparent' }}>
              <Card.Img variant="top" src="" />
              <Card.Body>
-               <Card.Title>{producto.nombre}</Card.Title>
+               <Card.Title className='nombre'>{producto.nombre}</Card.Title>
                <Card.Text>
                {producto.descripcion}
                </Card.Text>

@@ -1,7 +1,6 @@
 import React from 'react'
 import './regístrate.css'
 import {Form} from 'react-bootstrap'
-import swal from 'sweetalert'
 import { useState } from 'react'
 
 function Regístrate() {
@@ -10,13 +9,21 @@ function Regístrate() {
   name: "",
   lastname:"",
   email: "",
-  password: "",
-  rol:""
+  password: ""
+  
   
  })
 
- const onSave =(event) =>{
+ async function onSave (event){
   event.PreventDefault()  
+  console.log(form)
+ await fetch("http://localhost:3001/app/auth/signup",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify(form)
+  }).then(resp=>resp.json()).then(result=> console.log(result))
    
  } 
 
@@ -32,7 +39,7 @@ function Regístrate() {
     <div>
       <h1>Registro de Usuario</h1>
       <Form onSubmit={onSave} className='form-reserva'>
-      <Form.Group className='mb-3' controlId='formBasicEmail'>
+      <Form.Group>
       <Form.Label>Nombre</Form.Label>
      <Form.Control type='text' name='name' value={form.name}  onChange={onChange} placeholder='Escribe tu nombre'/>
       <Form.Label>Apellido</Form.Label>
@@ -41,17 +48,16 @@ function Regístrate() {
       <Form.Control type='email'  value={form.email} onChange={onChange} placeholder='Escribe tu Email' name='email'/>
       <Form.Label>Contraseña</Form.Label>
       <Form.Control type='password'  value={form.password} onChange={onChange} placeholder='Escribe una contraseña' name='password'/>
-      <Form.Label>Rol</Form.Label>
-      <Form.Control type='text'  value={form.rol} onChange={onChange}  name='rol'/>
+      
       
 
-      <Form.Text className='text-muted'>
+      <Form.Text>
          Tu informacion es privada y no sera compartida o reutilizada
         </Form.Text>
 
       </Form.Group>
      
-      <button type="submit" class="btn btn-light">Guardar</button>
+      <button type="submit" >Guardar</button>
       </Form>
     </div>
     </>
