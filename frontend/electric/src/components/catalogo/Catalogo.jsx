@@ -1,38 +1,54 @@
 import React from 'react'
-import './catalogo.css'
-import {productos} from '../catalogo/data'
-import { Card,Button} from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
+import  { useEffect, useState } from 'react';
 
-function Catalogo() {
+
+
+
+function Productos() {
+
+  
+  const[productos,setProductos]= useState([])
+  useEffect(()=>{
+   fetch("http://localhost:3001/productos/getProdList").then(req =>req.json()).then(response=>{
+     console.log(response)
+     setProductos(response.data)
+   },[])
+
+  })
+
   return (
-    
-    <div className='menu-contenedor'>
-          <h1>Platos Tradicionales</h1>
-        <div className='productos-contenedor'>
-          {productos.map((producto, index)=>{
-            return(
-              <Card className='Card'>
-                <Card.Img variant='top' className='imgCard' src={producto.img}/>
-                <Card.Body>
-                  <Card.Title>
-                    {producto.descripcion}
-                  </Card.Title>
-                  <Button className='button' variant="primary">{producto.precio}</Button>
-               </Card.Body>
-               
-              </Card>
-              
-
-            )
-          })
-
-
-
-          }
-
-         </div>
+    <div className='cards-wrap'>
+      
+         {productos.map( (producto, index) => {
+           return( 
+             <Card className='card-menu' key={index} style={{ width: '18rem', background: 'transparent' }}>
+             <Card.Img variant="top" src="" />
+             <Card.Body>
+               <Card.Title>{producto.nombre}</Card.Title>
+               <Card.Text>
+               {producto.descripcion}
+               </Card.Text>
+               <Card.Text>
+               {producto.precio}
+               </Card.Text>
+               <Card.Text>
+               {producto.existencias}
+               </Card.Text>
+               <Button variant="primary">Comprar</Button>
+             </Card.Body>
+           </Card>
+           )
+         })} 
     </div>
+    
+
+       
+        
+       
+       
+  
   )
 }
 
-export default Catalogo;
+export default Productos

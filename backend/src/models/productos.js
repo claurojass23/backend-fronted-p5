@@ -2,14 +2,14 @@ const mongoose =require('mongoose')
 
 const prosuctoSchema = new mongoose.Schema(
     {
-        nombre:{type:String, require:true},
-        descripcion:String,
-        img: File,
-        precio: Number,
-        categories:[{
-        type:mongoose.Schema.type.ObjectId
-    }]
+       img:String,
+       nombre:String,
+       descripcion:String,
+       precio:Number,
+       existencias:Number,
+       
     }
+    
 )
 
 const  Producto = mongoose.model('producto',prosuctoSchema)

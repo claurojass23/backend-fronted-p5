@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const auth = require('./src/routes/auth')
-
+const productos = require('./src/routes/productos.js')
 
 
 require('dotenv').config()
@@ -17,6 +17,7 @@ server.use(express.json())
 
 connect(process.env.MONGO_URL)
 auth(server)
+productos(server)
 
 server.get('/',(req,res)=>{
     res.send("API V1.0")

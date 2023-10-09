@@ -1,15 +1,19 @@
-const{Router} = require('express')
-const producto = require('../controllers/productos')
+const { Router } = require('express')
+const { buscarProducto,
+    newProducto,
+    eliminarProducto,
+    modificarProducto, getProductos } = require('../controllers/productosControllers.js')
 
-function producto(app){
+
+const productos = (server) => {
     const router = Router()
-    app.use('/producto',router)
-
-    router.get('/',(req,res)=>{
-      return res.json({
-         success:true
-      })
-    })
+    server.use('/productos', router)
+    router.get('/buscarProd', buscarProducto)
+    router.get('/getProdList', getProductos)
+    router.post('/crearProd', newProducto)
+    router.put('/modificarProd/:id', modificarProducto)
+    router.delete('/eliminarProd/:id', eliminarProducto)
 }
 
-module.exports = producto
+module.exports = productos
+
